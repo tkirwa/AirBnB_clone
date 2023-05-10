@@ -13,6 +13,21 @@ Class User, State, City, Place among other classes created will all inherit from
 # Command-line interpreter
 Program that provides a text based interface for interacting with an operating system or executing commands.
 
+Types
+
+Bash(Bourne Again Shell): Default command-line shell in unix ,linux and macOS.
+
+Windows Command Prompt(cmd.exe)
+
+PowerShell: commmand-line developed by windows for windows, macOS and linux.
+
+Zsh(ZShell)
+
+Fish(Friendly Interactive SHell)
+
+Csh(CShell)
+
+
 # Python modules
 
 Cmd module
