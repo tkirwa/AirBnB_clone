@@ -14,9 +14,10 @@ Class User, State, City, Place among other classes created will all inherit from
 Program that provides a text based interface for interacting with an operating system or executing commands.
 
 # Python modules
-#Cmd module
+Cmd module
 ‘cmd.Cmd’ class provides a convinient framework for building interactive command-line programs in Python.
-#sys module
+
+sys module
 Builtin python module that grants access to various system-specific parameters and functions.
 
 # Legal/ Licensing
