@@ -13,7 +13,7 @@ Class User, State, City, Place among other classes created will all inherit from
 # Command-line interpreter
 Program that provides a text based interface for interacting with an operating system or executing commands.
 
-Types
+Examples
 
 Bash(Bourne Again Shell): Default command-line shell in unix ,linux and macOS.
 
