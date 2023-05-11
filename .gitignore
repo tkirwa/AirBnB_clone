@@ -1,0 +1,13 @@
+# Python
+*.pyc
+__pycache__/
+venv/
+env/
+*.pyo
+*.pyd
+*.swp
+*.bak
+*.tmp
+*.log
+*.vscode/
+*~
