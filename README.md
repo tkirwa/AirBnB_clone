@@ -1,6 +1,6 @@
 # AirBnB Clone Project
 # AirBnB clone - The console
-It is the first piece of tihe AirBnB project which is among the major projects Alx students are tasked. It sheds light on file serialization, objects and cration of a file storage.
+It is the first piece of tihe AirBnB project which is among the major projects Alx students are tasked. It sheds light on file serialization, objects and creation of a file storage.
 It is command line interface from which you can create and modify files in storage before you can build up on the rest of your AirBnB application.
 
 # Base Model
@@ -20,11 +20,17 @@ Program that provides a text based interface for interacting with an operating s
 3. Run the command interpreter script './console.py'.
 
 Once the interpeter is running, you can enter commands to manage the AirBnB project.
+
 **Command format**
 (command) (class) (action) (arguments)
+
+
 **eg**
+
 Destroying a City object -> (hbnb) destroy City 9876-5432-1098
+
 Listing all objects of a specific class -> (hbnb) all User
+
 
 **Command list**
 -   `create`: Creates a new object of the specified class.
@@ -75,7 +81,9 @@ You will also need to implement a flow of serialization/deserialization, which i
 
 # Authors
 This project is a collaborative effort. The following individuals have contributed to the repository:
+
 Delegate-is <kelvinjuma903@gmail.com>
+
 Tonny Kirwa <tonnykirwa@yahoo.com>
 
 ### Branches and Pull Requests
