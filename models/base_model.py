@@ -18,11 +18,15 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         storage.new(self)
-    
+
     def __str__(self,):
         """Returns class name, id and dictionary attribute
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+                self.__class__.__name__,
+                self.id,
+                self.__dict__
+                )
 
     def save(self):
         """Update instance attribute with current time
