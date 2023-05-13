@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 """
-This module defines the User class.
+This module defines the Review class.
 """
 
 from models.base_model import BaseModel
 
 
-class User(BaseModel):
+class Review(BaseModel):
     """
-    Represents a user in the project.
+    Represents a review in the project.
 
     Attributes:
-        email (str): The email address of the user.
-        password (str): The password of the user.
-        first_name (str): The first name of the user.
-        last_name (str): The last name of the user.
+        place_id (str): The ID of the place that the review belongs to.
+        user_id (str): The ID of the user who wrote the review.
+        text (str): The content of the review.
 
     Inherits:
         BaseModel: The base model class.
@@ -23,19 +22,18 @@ class User(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """
-        Initializes a new instance of the User class.
+        Initializes a new instance of the Review class.
 
         Args:
             *args: Variable length argument list.
             **kwargs: Arbitrary keyword arguments containing instance attributes.
 
-        The User class inherits from BaseModel and initializes its attributes using BaseModel's __init__ method.
-        Additional attributes specific to User can be set from kwargs.
+        The Review class inherits from BaseModel and initializes its attributes using BaseModel's __init__ method.
+        Additional attributes specific to Review can be set from kwargs.
         """
-        self.email = ""
-        self.password = ""
-        self.first_name = ""
-        self.last_name = ""
+        self.place_id = ""
+        self.user_id = ""
+        self.text = ""
         super().__init__(*args, **kwargs)
 
     def to_dict(self):
@@ -48,10 +46,9 @@ class User(BaseModel):
         The dictionary includes all instance attributes and necessary information to recreate the instance.
         """
         obj_dict = super().to_dict()
-        obj_dict["email"] = self.email
-        obj_dict["password"] = self.password
-        obj_dict["first_name"] = self.first_name
-        obj_dict["last_name"] = self.last_name
+        obj_dict["place_id"] = self.place_id
+        obj_dict["user_id"] = self.user_id
+        obj_dict["text"] = self.text
         return obj_dict
 
     def __str__(self):
