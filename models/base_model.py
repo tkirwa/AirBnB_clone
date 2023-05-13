@@ -6,6 +6,7 @@ Defining a class BaseModel that all other inherit from
 
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:

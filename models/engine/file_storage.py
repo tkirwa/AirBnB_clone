@@ -1,6 +1,14 @@
 import json
 import os.path
 
+from models.amenity import Amenity
+from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
+
 
 class FileStorage:
     __file_path = "file.json"
@@ -31,3 +39,44 @@ class FileStorage:
                         if attr != "__class__":
                             setattr(instance, attr, val)
                     self.__objects[key] = instance
+
+    def _deserialize_objects(self):
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review,
+        }
+        try:
+            with open(self.__file_path, "r") as file:
+                data = json.load(file)
+                for key, value in data.items():
+                    class_name = value["__class__"]
+                    if class_name in classes:
+                        obj = classes[class_name](**value)
+                        self.__objects[key] = obj
+        except FileNotFoundError:
+            pass
+
+    def _serialize_objects(self):
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review,
+        }
+
+        serialized_objects = {}
+        for key, obj in self.__objects.items():
+            class_name = obj.__class__.__name__
+            if class_name in classes:
+                serialized_objects[key] = obj.to_dict()
+                serialized_objects[key].update({"__class__": class_name})
+        with open(self.__file_path, "w") as file:
+            json.dump(serialized_objects, file)
