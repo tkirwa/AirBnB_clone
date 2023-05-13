@@ -1,71 +1,44 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
-Import modules and packages.
-Console module for the AirBnB clone project.
+Console module for the AirBnB clone
 """
-
-
 import cmd
-import sys
-from models.base_model import BaseModel
+
 from models import storage
-from models.user import User
-from models.place import Place
-from models.city import City
 from models.amenity import Amenity
-from models.state import State
+from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
 from models.review import Review
-import json
-import shlex
+from models.state import State
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """
-    Implementation of the command interpreter.
+    Command line interpreter for the AirBnB clone
     """
 
     prompt = "(hbnb) "
 
     def emptyline(self):
-        """
-        Called when an empty line + ENTER is entered.
-        """
+        """Override the emptyline method"""
         pass
 
     def do_quit(self, arg):
-        """
-        Quit command to exit the program.
-        """
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, arg):
-        """
-        EOF command to exit the program.
-        """
+        """EOF command to exit the program"""
         print()
         return True
 
-    def help_quit(self):
-        """
-        Help message for quit command.
-        """
-        print("Quit command to exit the program.")
-
-    def help_EOF(self):
-        """
-        Help message for EOF command.
-        """
-        print("EOF command to exit the program.")
-
     def do_create(self, arg):
-        """
-        Creates a new instance of BaseModel.
-        Usage: create <class name>
-        """
+        """Create a new instance of a BaseModel"""
         if not arg:
             print("** class name missing **")
             return
-
         try:
             new_instance = eval(arg)()
             new_instance.save()
@@ -74,87 +47,98 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        """
-        Prints the string representation of an instance.
-        Usage: show <class name> <id>
-        """
-        args = arg.split()
-        if not args:
+        """Prints the string representation of an instance"""
+        if not arg:
             print("** class name missing **")
             return
-
-        if args[0] not in storage.classes:
+        args = arg.split()
+        if args[0] not in globals():
             print("** class doesn't exist **")
             return
-
         if len(args) < 2:
             print("** instance id missing **")
             return
-
         key = "{}.{}".format(args[0], args[1])
-        if key in storage.all():
-            print(storage.all()[key])
+        all_instances = storage.all()
+        instance = all_instances.get(key)
+        if instance:
+            print(instance)
         else:
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """
-        Deletes an instance based on the class name and id.
-        Usage: destroy <class name> <id>
-        """
-        args = arg.split()
-        if not args:
+        """Deletes an instance based on the class name and id"""
+        if not arg:
             print("** class name missing **")
             return
-
-        if args[0] not in storage.classes:
+        args = arg.split()
+        if args[0] not in globals():
             print("** class doesn't exist **")
             return
-
         if len(args) < 2:
             print("** instance id missing **")
             return
-
         key = "{}.{}".format(args[0], args[1])
-        if key in storage.all():
-            del storage.all()[key]
+        all_instances = storage.all()
+        instance = all_instances.get(key)
+        if instance:
+            del all_instances[key]
             storage.save()
         else:
             print("** no instance found **")
 
     def do_all(self, arg):
-        """
-        Prints all instances or instances of a specific class.
-        Usage: all [class name]
-        """
-        args = arg.split()
-        objects = storage.all()
-
-        if not args:
-            print([str(obj) for obj in objects.values()])
-            return
-
-        if args[0] not in storage.classes:
-            print("** class doesn't exist **")
-            return
-
-        print(
-            [
-                str(obj)
-                for obj in objects.values()
-                if type(obj).__name__ == args[0]
-            ]
-        )
+        """Prints all string representations of all instances"""
+        all_instances = storage.all()
+        objects = []
+        if arg:
+            if arg not in globals():
+                print("** class doesn't exist **")
+                return
+            for key, obj in all_instances.items():
+                if arg == key.split(".")[0]:
+                    objects.append(str(obj))
+        else:
+            for obj in all_instances.values():
+                objects.append(str(obj))
+        print(objects)
 
     def do_update(self, arg):
-        """
-        Updates an instance based on the class name and id.
-        Usage: update <class name> <id> <attribute name> "<attribute value>"
-        """
-        args = arg.split()
-        if not args:
+        """Updates an instance based on the class name and id"""
+        if not arg:
             print("** class name missing **")
             return
-
-        if args[0] not in storage.classes:
+        args = arg.split()
+        if args[0] not in globals():
             print("** class doesn't exist **")
+            return
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+        key = "{}.{}".format(args[0], args[1])
+        all_instances = storage.all()
+        instance = all_instances.get(key)
+        if instance is None:
+            print("** no instance found **")
+            return
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+        if len(args) < 4:
+            print("** value missing **")
+            return
+        attribute = args[2]
+        value = args[3]
+        if hasattr(instance, attribute):
+            try:
+                value = eval(value)
+            except (NameError, SyntaxError):
+                pass
+            setattr(instance, attribute, value)
+            storage.save()
+        else:
+            print("** no instance found **")
+
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
