@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
-State Class inheriting from BaseModel
+City Class inheriting from BaseModel
 """
 from models.base_model import BaseModel
 
 
-class State(BaseModel):
+class City(BaseModel):
     """Defining public class attributes
     """
+    state_id = ""
     name = ""
