@@ -5,16 +5,9 @@ Console module for the AirBnB clone
 
 import cmd
 from datetime import datetime
-from models.base_model import BaseModel
-from models.user import User
-from models.place import Place
-from models.city import City
+import models
 from models.amenity import Amenity
-from models.state import State
-from models.review import Review
-from models import storage
-import json
-import shlex
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -46,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             print("** class name missing **")
-        elif arg not in HBNBCommand.valid_classes:
+        elif type_model not in HBNBCommand.valid_classes:
             print("** class doesn't exist **")
         else:
             dct = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
@@ -148,6 +141,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         else:
             print("** no instance found **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
