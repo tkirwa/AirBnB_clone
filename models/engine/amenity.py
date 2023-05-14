@@ -23,7 +23,8 @@ class Amenity(BaseModel):
 
         Args:
             *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments containing instance attributes.
+            **kwargs: Arbitrary keyword arguments
+            containing instance attributes.
 
         Attributes:
             name (str): The name of the Amenity.
