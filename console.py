@@ -45,6 +45,11 @@ class HBNBCommand(cmd.Cmd):
             "Place", "Amenity", "Review"
             }
 
+    
+    def help_help(self):
+        """ Help command initialization"""
+        print("Provides description of a given command")
+
     def emptyline(self):
         """Do nothing upon receiving an empty line."""
         pass
