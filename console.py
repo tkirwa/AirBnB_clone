@@ -88,18 +88,22 @@ class HBNBCommand(cmd.Cmd):
         """Usage: create <class>
         Create a new class instance and print its id.
         """
-        argl = parse(arg)
-        if len(argl) == 0:
+        commands = arg.split(" ")
+        if commands[0] == "":
             print("** class name missing **")
-        elif argl[0] not in HBNBCommand.__classes:
+        elif commands[0] not in __class__. __classes:
             print("** class doesn't exist **")
         else:
-            print(eval(argl[0])().id)
-            storage.save()
+            dct = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+               'City': City, 'Amenity': Amenity, 'State': State,
+               'Review': Review}
+            my_model = dct[arg]()
+            print(my_model.id)
+            my_model.save()
 
     def do_show(self, arg):
         """Usage: show <class> <id> or <class>.show(<id>)
-        Display the string representation of a class instance of a given id.
+        Disiplay the string representation of a class instance of a given id.
         """
         argl = parse(arg)
         obj_dict = storage.all()
@@ -113,6 +117,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             print(obj_dict["{}.{}".format(argl[0], argl[1])])
+
 
     def do_destroy(self, arg):
         """Usage: destroy <class> <id> or <class>.destroy(<id>)
@@ -132,20 +137,27 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """Usage: all or all <class> or <class>.all()
+        """
+        Usage: all or all <class> or <class>.all()
         Display string representations of all instances of a given class.
-        If no class is specified, displays all instantiated objects."""
-        argl = parse(arg)
-        if len(argl) > 0 and argl[0] not in HBNBCommand.__classes:
+        If no class is specified, displays all instantiated objects.
+        """
+        if not arg:
+            print("** class name missing **")
+            return
+
+        args = arg.split(' ')
+
+        if args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            objl = []
-            for obj in storage.all().values():
-                if len(argl) > 0 and argl[0] == obj.__class__.__name__:
-                    objl.append(obj.__str__())
-                elif len(argl) == 0:
-                    objl.append(obj.__str__())
-            print(objl)
+            all_objs = storage.all()
+            list_instances = []
+            for key, value in all_objs.items():
+                ob_name = value.__class__.__name__
+                if ob_name == args[0]:
+                    list_instances += [value.__str__()]
+        print(list_instances)
 
     def do_count(self, arg):
         """Usage: count <class> or <class>.count()
