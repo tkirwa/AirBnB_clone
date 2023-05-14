@@ -40,7 +40,8 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "State", "City", "Place", "Amenity", "Review"}
+    __classes = {"BaseModel", "User", "State", "City", "Place",
+                 "Amenity", "Review"}
 
     def emptyline(self):
         """Do nothing upon receiving an empty line."""
@@ -57,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         }
         match = re.search(r"\.", arg)
         if match is not None:
-            argl = [arg[: match.span()[0]], arg[match.span()[1] :]]
+            argl = [arg[: match.span()[0]], arg[match.span()[1]:]]
             match = re.search(r"\((.*?)\)", argl[1])
             if match is not None:
                 command = [argl[1][: match.span()[0]], match.group()[1:-1]]
