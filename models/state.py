@@ -24,9 +24,11 @@ class State(BaseModel):
 
         Args:
             *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments containing instance attributes.
+            **kwargs: Arbitrary keyword arguments containing...
+                instance attributes.
 
-        The State class inherits from BaseModel and initializes its attributes using BaseModel's __init__ method.
+        The State class inherits from BaseModel and initializes its...
+            attributes using BaseModel's __init__ method.
         Additional attributes specific to State can be set from kwargs.
         """
         self.name = ""
@@ -39,7 +41,8 @@ class State(BaseModel):
         Returns:
             dict: Dictionary representation of the instance.
 
-        The dictionary includes all instance attributes and necessary information to recreate the instance.
+        The dictionary includes all instance attributes and necessary...
+            information to recreate the instance.
         """
         obj_dict = super().to_dict()
         obj_dict["name"] = self.name
@@ -52,6 +55,8 @@ class State(BaseModel):
         Returns:
             str: The string representation of the instance.
 
-        The string representation follows the format: "[<class name>] (<id>) <attribute dictionary>"
+        The string representation follows the format: "[<class name>] (<id>)
+          <attribute dictionary>"
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.
+                                     __dict__)

@@ -29,16 +29,20 @@ class BaseModel:
 
         Args:
             *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments containing instance attributes.
+            **kwargs: Arbitrary keyword arguments containing
+                instance attributes.
 
-        If kwargs is not empty, it populates the instance attributes from the dictionary representation.
-        Otherwise, it generates a new id and sets the creation and update timestamps.
+        If kwargs is not empty, it populates the instance attributes
+            from the dictionary representation.
+        Otherwise, it generates a new id and sets the creation and...
+            update timestamps.
         """
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "created_at" or key == "updated_at":
-                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                        value = datetime.strptime(
+                            value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
@@ -52,15 +56,18 @@ class BaseModel:
         Returns:
             str: The string representation of the instance.
 
-        The string representation follows the format: "[<class name>] (<id>) <attribute dictionary>"
+        The string representation follows the format: "[<class name>]
+            (<id>) <attribute dictionary>"
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.
+                                     __dict__)
 
     def save(self):
         """
         Updates the updated_at attribute with the current timestamp.
 
-        This method should be called whenever an attribute of the instance is modified.
+        This method should be called whenever an attribute of the...
+            instance is modified.
         """
         self.updated_at = datetime.now()
 
@@ -71,7 +78,8 @@ class BaseModel:
         Returns:
             dict: The dictionary representation of the instance.
 
-        The dictionary includes all instance attributes and necessary information to recreate the instance.
+        The dictionary includes all instance attributes and necessary...
+            information to recreate the instance.
         """
         obj_dict = self.__dict__.copy()
         obj_dict["__class__"] = self.__class__.__name__

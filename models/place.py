@@ -17,7 +17,8 @@ class Place(BaseModel):
         description (str): The description of the place.
         number_rooms (int): The number of rooms in the place.
         number_bathrooms (int): The number of bathrooms in the place.
-        max_guest (int): The maximum number of guests the place can accommodate.
+        max_guest (int): The maximum number of guests the place can
+            accommodate.
         price_by_night (int): The price per night to stay at the place.
         latitude (float): The latitude coordinate of the place.
         longitude (float): The longitude coordinate of the place.
@@ -34,9 +35,11 @@ class Place(BaseModel):
 
         Args:
             *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments containing instance attributes.
+            **kwargs: Arbitrary keyword arguments containing
+                instance attributes.
 
-        The Place class inherits from BaseModel and initializes its attributes using BaseModel's __init__ method.
+        The Place class inherits from BaseModel and initializes its attributes
+            using BaseModel's __init__ method.
         Additional attributes specific to Place can be set from kwargs.
         """
         self.city_id = ""
@@ -59,7 +62,8 @@ class Place(BaseModel):
         Returns:
             dict: Dictionary representation of the instance.
 
-        The dictionary includes all instance attributes and necessary information to recreate the instance.
+        The dictionary includes all instance attributes and necessary
+            information to recreate the instance.
         """
         obj_dict = super().to_dict()
         obj_dict["city_id"] = self.city_id
@@ -82,6 +86,8 @@ class Place(BaseModel):
         Returns:
             str: The string representation of the instance.
 
-        The string representation follows the format: "[<class name>] (<id>) <attribute dictionary>"
+        The string representation follows the format: "[<class name>] (<id>)
+            <attribute dictionary>"
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.
+                                     __dict__)

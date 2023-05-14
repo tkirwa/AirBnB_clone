@@ -23,7 +23,8 @@ class Amenity(BaseModel):
 
         Args:
             *args: Variable length argument list.
-            **kwargs: Arbitrary keyword arguments containing instance attributes.
+            **kwargs: Arbitrary keyword arguments containing
+                instance attributes.
         """
         super().__init__(*args, **kwargs)
         self.name = ""
