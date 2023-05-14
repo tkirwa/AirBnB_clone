@@ -16,7 +16,9 @@ class TestSaveReloadBaseModel(unittest.TestCase):
         storage.delete_all()
 
     def test_save_method(self):
-        """Test the save method updates the updated_at attribute and saves the instance."""
+        """Test the save method updates the updated_at
+        attribute and saves the instance.
+        """
         original_updated_at = self.model.updated_at
         self.model.save()
         updated_updated_at = self.model.updated_at

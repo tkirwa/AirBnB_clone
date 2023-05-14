@@ -19,7 +19,10 @@ class TestConsole(unittest.TestCase):
         """Test the help command."""
         with patch('builtins.input', return_value='help'):
             HBNBCommand().cmdloop()
-            self.assertIn("Documented commands (type help <topic>):", mock_stdout.getvalue())
+            self.assertIn(
+                    "Documented commands (type help <topic>):",
+                    mock_stdout.getvalue()
+                    )
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_emptyline(self, mock_stdout):
@@ -29,6 +32,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual(mock_stdout.getvalue(), "")
 
     # Add more test methods as needed
+
 
 if __name__ == '__main__':
     unittest.main()

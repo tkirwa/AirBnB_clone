@@ -72,5 +72,6 @@ class TestFileStorage(unittest.TestCase):
         # Assert that the objects dictionary contains the BaseModel instance
         self.assertIn("BaseModel.{}".format(model.id), objects)
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -61,8 +61,14 @@ class TestPlace(unittest.TestCase):
 
         self.assertEqual(place_dict["__class__"], "Place")
         self.assertEqual(place_dict["id"], place.id)
-        self.assertEqual(place_dict["created_at"], place.created_at.isoformat())
-        self.assertEqual(place_dict["updated_at"], place.updated_at.isoformat())
+        self.assertEqual(
+                place_dict["created_at"],
+                place.created_at.isoformat()
+                )
+        self.assertEqual(
+                place_dict["updated_at"],
+                place.updated_at.isoformat()
+                )
         self.assertEqual(place_dict["city_id"], "")
         self.assertEqual(place_dict["user_id"], "")
         self.assertEqual(place_dict["name"], "Cabin")

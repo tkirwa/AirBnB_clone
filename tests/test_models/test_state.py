@@ -28,8 +28,14 @@ class TestState(unittest.TestCase):
 
         self.assertEqual(state_dict["__class__"], "State")
         self.assertEqual(state_dict["id"], state.id)
-        self.assertEqual(state_dict["created_at"], state.created_at.isoformat())
-        self.assertEqual(state_dict["updated_at"], state.updated_at.isoformat())
+        self.assertEqual(
+                state_dict["created_at"],
+                state.created_at.isoformat()
+                )
+        self.assertEqual(
+                state_dict["updated_at"],
+                state.updated_at.isoformat()
+                )
         self.assertEqual(state_dict["name"], "New York")
 
     def test_save_method(self):
@@ -38,9 +44,7 @@ class TestState(unittest.TestCase):
         original_updated_at = state.updated_at
         state.save()
         updated_updated_at = state.updated_at
-
         self.assertNotEqual(original_updated_at, updated_updated_at)
-
 
 
 if __name__ == '__main__':

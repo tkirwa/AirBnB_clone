@@ -19,7 +19,12 @@ class TestUser(unittest.TestCase):
 
     def test_initialization(self):
         """Test the initialization of User instance."""
-        user = User(first_name="John", last_name="Doe", email="johndoe@example.com", password="password")
+        user = User(
+                first_name="John",
+                last_name="Doe",
+                email="johndoe@example.com",
+                password="password"
+                )
         self.assertEqual(user.first_name, "John")
         self.assertEqual(user.last_name, "Doe")
         self.assertEqual(user.email, "johndoe@example.com")
@@ -33,7 +38,12 @@ class TestUser(unittest.TestCase):
 
     def test_to_dict_method(self):
         """Test the to_dict method of the User instance."""
-        user = User(first_name="John", last_name="Doe", email="johndoe@example.com", password="password")
+        user = User(
+                first_name="John",
+                last_name="Doe",
+                email="johndoe@example.com",
+                password="password"
+                )
         user_dict = user.to_dict()
 
         self.assertEqual(user_dict["__class__"], "User")

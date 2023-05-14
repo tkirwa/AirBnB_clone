@@ -8,7 +8,6 @@ from models.amenity import Amenity
 from models.base_model import BaseModel
 
 
-
 class TestAmenity(unittest.TestCase):
     """
     Test suite for the Amenity class.
@@ -74,6 +73,7 @@ class TestAmenity(unittest.TestCase):
         self.assertEqual(amenity.created_at.isoformat(), "2022-01-01T00:00:00")
         self.assertEqual(amenity.updated_at.isoformat(), "2022-01-01T00:00:00")
         self.assertEqual(amenity.name, "Wifi")
+
 
 if __name__ == "__main__":
     unittest.main()
