@@ -1,1 +1,15 @@
-/* No additional styles for the footer */
+footer {
+    background-color: #484848;
+    height: 60px;
+    width: 100%;
+    border-top: 1px solid #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer-text {
+    color: white;
+}
