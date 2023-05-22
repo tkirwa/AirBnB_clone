@@ -1,1 +1,22 @@
+<<<<<<< HEAD
 /* No additional styles for the header */
+=======
+header {
+	background-color: white;
+	height: 70px;
+	width: 100%;
+
+	border-bottom: 1px solid#CCCCCC;
+}
+
+#header_logo{
+	height: 100%;
+	width: 142px;
+
+	background-image: url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	margin-left: 20px;
+}
+>>>>>>> 7faeb3ed8e5dedfc3d6390c62fa5097812ebf63e

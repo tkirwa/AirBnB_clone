@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     padding: 0;
@@ -38,4 +39,13 @@ footer {
 
 .footer-text {
     color: white;
+=======
+body{
+	margin:0px;
+	padding:0px;
+
+	background: color #484848;
+	font: 14px;
+	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+>>>>>>> 7faeb3ed8e5dedfc3d6390c62fa5097812ebf63e
 }

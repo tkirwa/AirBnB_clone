@@ -1,1 +1,14 @@
+<<<<<<< HEAD
 /* No additional styles for the footer */
+=======
+footer {
+	position: fixed;
+	bottom: 0;
+	background-color: white;
+	height: 60px;
+	width: 100%;
+	text-align: center;
+	line-height: 30px;
+	border-top: 1px solid#CCCCCC;
+}
+>>>>>>> 7faeb3ed8e5dedfc3d6390c62fa5097812ebf63e
